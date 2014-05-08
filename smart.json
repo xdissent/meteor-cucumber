@@ -1,0 +1,9 @@
+{
+  "name": "cucumber",
+  "description": "CucumberJS test runner and Velocity reporter with Selenium Webdriver and Zombie support",
+  "homepage": "https://github.com/xdissent/meteor-cucumber",
+  "author": "Greg Thornton <xdissent@me.com> (http://xdissent.com)",
+  "version": "0.0.1",
+  "git": "https://github.com/xdissent/meteor-cucumber.git",
+  "packages": {}
+}
