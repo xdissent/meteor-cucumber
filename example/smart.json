@@ -1,0 +1,16 @@
+{
+    "packages": {
+        "cucumber": {
+            "path": ".."
+        },
+        "velocity": {
+            "git": "https://github.com/xolvio/velocity.git"
+        },
+        "selenium": {
+            "git": "https://github.com/xdissent/meteor-selenium.git"
+        },
+        "mirror": {
+            "git": "https://github.com/xdissent/meteor-mirror.git"
+        }
+    }
+}
