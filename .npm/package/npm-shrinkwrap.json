@@ -173,6 +173,59 @@
     "disrequire": {
       "version": "https://github.com/xdissent/disrequire/archive/v0.0.0.tar.gz#a39214c33c8e4c3a839e4f38b7e8c162b6220ab1"
     },
+    "protractor": {
+      "version": "0.22.0",
+      "dependencies": {
+        "selenium-webdriver": {
+          "version": "2.41.0"
+        },
+        "minijasminenode": {
+          "version": "0.4.0"
+        },
+        "saucelabs": {
+          "version": "0.1.1"
+        },
+        "glob": {
+          "version": "3.2.9",
+          "dependencies": {
+            "minimatch": {
+              "version": "0.2.14",
+              "dependencies": {
+                "lru-cache": {
+                  "version": "2.5.0"
+                },
+                "sigmund": {
+                  "version": "1.0.0"
+                }
+              }
+            },
+            "inherits": {
+              "version": "2.0.1"
+            }
+          }
+        },
+        "adm-zip": {
+          "version": "0.4.4"
+        },
+        "optimist": {
+          "version": "0.6.1",
+          "dependencies": {
+            "wordwrap": {
+              "version": "0.0.2"
+            },
+            "minimist": {
+              "version": "0.0.9"
+            }
+          }
+        },
+        "q": {
+          "version": "1.0.0"
+        },
+        "lodash": {
+          "version": "2.4.1"
+        }
+      }
+    },
     "zombie": {
       "version": "2.0.0-alpha31",
       "dependencies": {

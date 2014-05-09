@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <title>example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+</head>
+<body ng-controller="HelloCtrl">
+
+  <h1>Hello World!</h1>
+  {{greeting}}
+  <input type="button" value="Click" ng-click="click()" />
+
+  <script>
+    function HelloCtrl ($scope) {
+      
+      $scope.greeting = 'Welcome to example.';
+
+      $scope.click = function () {
+        if (typeof console !== 'undefined')
+          console.log("You pressed the button");
+      }
+    }
+  </script>
+</body>
+</html>

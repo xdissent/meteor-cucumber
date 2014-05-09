@@ -14,4 +14,3 @@ module.exports = ->
       return callback() unless -1 is source.indexOf text 
       callback new Error "Expected to find #{text} on page"
     , callback
-
