@@ -24,6 +24,8 @@ Package.on_use(function (api) {
 
   api.add_files('src/settings.coffee', 'server');
 
+  api.add_files('src/util.coffee', 'server');
+
   api.add_files('src/world.coffee', 'server');
   api.add_files('src/world/selenium.coffee', 'server');
   api.add_files('src/world/protractor.coffee', 'server');
@@ -40,8 +42,8 @@ Package.on_use(function (api) {
   api.add_files('src/runner/local.coffee', 'server');
   api.add_files('src/runner/remote.coffee', 'server');
   api.add_files('src/runner/mirror.coffee', 'server');
-  
+
   api.add_files('src/main.coffee', 'server');
-  
+
   api.export('Cucumber', 'server');
 });
