@@ -10,6 +10,35 @@ class Cucumber.Runner.Local extends Cucumber.Runner
     super()
     @_reloads = []
     @_configuration = cucumber.Cli.Configuration @_args()
+    argumentParser = cucumber.Cli.ArgumentParser @_args()
+    argumentParser.parse()
+    patchHelper = @_patchHelper
+    @_configuration.getSupportCodeLibrary = ->
+      supportCodeFilePaths = argumentParser.getSupportCodeFilePaths()
+      supportCodeLoader = cucumber.Cli.SupportCodeLoader supportCodeFilePaths
+      supportCodeLoader._buildSupportCodeInitializerFromPaths =
+        supportCodeLoader.buildSupportCodeInitializerFromPaths
+      supportCodeLoader.buildSupportCodeInitializerFromPaths = (paths) ->
+        wrapper = supportCodeLoader._buildSupportCodeInitializerFromPaths paths
+        # coffeelint: disable=missing_fat_arrows
+        ->
+          patchHelper this
+          wrapper.call this
+        # coffeelint: enable=missing_fat_arrows
+      supportCodeLoader.getSupportCodeLibrary()
+
+  _patchHelper: (helper) ->
+    return if helper._patched?
+    helper._patched = true
+    helper._defineStep = helper.defineStep
+    helper.defineStep = (name, code) ->
+      helper._defineStep name, Cucumber.Util.bindEnv code
+    helper.Given = helper.When = helper.Then = helper.defineStep
+    for type in ['Around', 'Before', 'After']
+      do (type) ->
+        helper["_define#{type}Hook"] = helper["define#{type}Hook"]
+        helper["define#{type}Hook"] = (args..., code) ->
+          helper["_define#{type}Hook"] args..., Cucumber.Util.bindEnv code
 
   _args: ->
     args = [null, null]
