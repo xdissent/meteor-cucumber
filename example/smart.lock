@@ -5,16 +5,16 @@
       "cucumber": {
         "path": ".."
       },
+      "cucumber-selenium": {
+        "git": "https://github.com/xdissent/meteor-cucumber-selenium.git",
+        "branch": "master"
+      },
+      "cucumber-protractor": {
+        "git": "https://github.com/xdissent/meteor-cucumber-protractor.git",
+        "branch": "master"
+      },
       "velocity": {
         "git": "https://github.com/xolvio/velocity.git",
-        "branch": "master"
-      },
-      "selenium": {
-        "git": "https://github.com/xdissent/meteor-selenium.git",
-        "branch": "master"
-      },
-      "mirror": {
-        "git": "https://github.com/xdissent/meteor-mirror.git",
         "branch": "master"
       }
     },
@@ -22,20 +22,30 @@
       "cucumber": {
         "path": ".."
       },
+      "cucumber-selenium": {
+        "git": "https://github.com/xdissent/meteor-cucumber-selenium.git",
+        "branch": "master",
+        "commit": "23fb68597f267bdc3680a257914fa7f4c35f3132"
+      },
+      "cucumber-protractor": {
+        "git": "https://github.com/xdissent/meteor-cucumber-protractor.git",
+        "branch": "master",
+        "commit": "15489a305a9abb07c5558c5bfe909d2f50f8c693"
+      },
       "velocity": {
         "git": "https://github.com/xolvio/velocity.git",
         "branch": "master",
-        "commit": "301cb260b21e7e4d54df525a03d3daffdb24b6eb"
-      },
-      "selenium": {
-        "git": "https://github.com/xdissent/meteor-selenium.git",
-        "branch": "master",
-        "commit": "7cb139816c0779a9518e55aa6b87686c6e01f3e8"
+        "commit": "910a9f9f3e729ae32425779139781108e21101c1"
       },
       "mirror": {
         "git": "https://github.com/xdissent/meteor-mirror.git",
-        "branch": "master",
-        "commit": "6becb9f1aeb0a4a4c6781b6b3144430eb9d3c0aa"
+        "tag": "v0.0.2",
+        "commit": "03d965dcab2f976a1fdc6ce513edcd4c17b75746"
+      },
+      "selenium": {
+        "git": "https://github.com/xdissent/meteor-selenium.git",
+        "tag": "v0.0.1",
+        "commit": "7cb139816c0779a9518e55aa6b87686c6e01f3e8"
       }
     }
   }

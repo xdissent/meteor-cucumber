@@ -8,6 +8,6 @@ autopublish
 insecure
 coffeescript
 cucumber
+cucumber-selenium
+cucumber-protractor
 velocity
-selenium
-mirror
