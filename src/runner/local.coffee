@@ -1,6 +1,6 @@
 
 cucumber = Npm.require 'cucumber'
-disrequire = Npm.require 'disrequire'
+Module = Npm.require 'module'
 
 
 # Runs tests locally
@@ -87,4 +87,6 @@ class Cucumber.Runner.Local extends Cucumber.Runner
 
   _reload: ->
     [reloads, @_reloads] = [@_reloads, []]
-    disrequire file for file in reloads
+    @_disrequire file for file in reloads
+
+  _disrequire: (file) -> delete Module._cache[file] if Module._cache[file]?

@@ -7,9 +7,7 @@ Npm.depends({
   'cucumber': '0.4.0',
   'chokidar': '0.8.2',
   'zombie': '2.0.0-alpha31',
-  'protractor': '0.22.0',
-  'disrequire': 'https://github.com/xdissent/disrequire/archive/v0.0.0.tar.gz' +
-    '#a39214c33c8e4c3a839e4f38b7e8c162b6220ab1'
+  'protractor': '0.22.0'
 });
 
 Package.on_use(function (api) {
