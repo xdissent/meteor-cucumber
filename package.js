@@ -6,17 +6,15 @@ Package.describe({
 Npm.depends({
   'cucumber': '0.4.0',
   'chokidar': '0.8.2',
-  'zombie': '2.0.0-alpha31',
-  'protractor': '0.22.0'
+  'zombie': '2.0.0-alpha31'
 });
 
 Package.on_use(function (api) {
   api.use(['underscore', 'coffeescript'], 'server');
 
   api.use('webapp', 'server', {weak: true});
-  api.use('selenium', 'server', {weak: true});
   api.use('velocity', 'server', {weak: true});
-  api.use('mirror', 'server', {weak: true});
+  api.use('mirror', 'server');
 
   api.add_files('src/index.coffee', 'server');
 
@@ -25,8 +23,6 @@ Package.on_use(function (api) {
   api.add_files('src/util.coffee', 'server');
 
   api.add_files('src/world.coffee', 'server');
-  api.add_files('src/world/selenium.coffee', 'server');
-  api.add_files('src/world/protractor.coffee', 'server');
   api.add_files('src/world/zombie.coffee', 'server');
 
   api.add_files('src/reporter.coffee', 'server');
