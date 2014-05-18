@@ -6,7 +6,6 @@
   "version": "0.0.1",
   "git": "https://github.com/xdissent/meteor-cucumber.git",
   "packages": {
-    "selenium": "0.0.1",
     "mirror": "0.0.1"
   }
 }
