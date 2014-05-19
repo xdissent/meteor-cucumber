@@ -9,16 +9,19 @@ class Cucumber.Runner.Local extends Cucumber.Runner
   constructor: (@mirror) ->
     super()
     @_reloads = []
+    @_loaded = []
     @_configuration = cucumber.Cli.Configuration @_args()
     argumentParser = cucumber.Cli.ArgumentParser @_args()
     argumentParser.parse()
     patchHelper = @_patchHelper
+    loaded = @_loaded
     @_configuration.getSupportCodeLibrary = ->
       supportCodeFilePaths = argumentParser.getSupportCodeFilePaths()
       supportCodeLoader = cucumber.Cli.SupportCodeLoader supportCodeFilePaths
       supportCodeLoader._buildSupportCodeInitializerFromPaths =
         supportCodeLoader.buildSupportCodeInitializerFromPaths
       supportCodeLoader.buildSupportCodeInitializerFromPaths = (paths) ->
+        loaded.push file for file in paths
         wrapper = supportCodeLoader._buildSupportCodeInitializerFromPaths paths
         # coffeelint: disable=missing_fat_arrows
         ->
@@ -71,12 +74,14 @@ class Cucumber.Runner.Local extends Cucumber.Runner
       success = null
       called = false
 
-      _callback = (err, _features, _success) ->
+      _callback = (err, _features, _success) =>
         return if called
         features ?= _features
         success ?= _success
         return unless features? and success? or err?
         called = true
+        @_disrequire file for file in @_loaded if Cucumber.settings.velocity
+        @_loaded.length = 0
         return callback err if err?
         result = if success then 'passed' else 'failed'
         callback null, result: result, features: features
