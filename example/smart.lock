@@ -14,8 +14,8 @@
         "branch": "master"
       },
       "velocity": {
-        "git": "https://github.com/xolvio/velocity.git",
-        "branch": "master"
+        "git": "https://github.com/xdissent/velocity.git",
+        "branch": "feature/mirror"
       }
     },
     "packages": {
@@ -33,9 +33,9 @@
         "commit": "15489a305a9abb07c5558c5bfe909d2f50f8c693"
       },
       "velocity": {
-        "git": "https://github.com/xolvio/velocity.git",
-        "branch": "master",
-        "commit": "910a9f9f3e729ae32425779139781108e21101c1"
+        "git": "https://github.com/xdissent/velocity.git",
+        "branch": "feature/mirror",
+        "commit": "ebadef88383ecd07c1eba4c2d68a24a790c7c512"
       },
       "mirror": {
         "git": "https://github.com/xdissent/meteor-mirror.git",

@@ -10,7 +10,8 @@
             "git": "https://github.com/xdissent/meteor-cucumber-protractor.git"
         },
         "velocity": {
-            "git": "https://github.com/xolvio/velocity.git"
+            "git": "https://github.com/xdissent/velocity.git",
+            "branch": "feature/mirror"
         }
     }
 }
