@@ -16,7 +16,7 @@ class Cucumber
     @_initStartup()
 
   @_initMirror: ->
-    return unless @settings.mirror
+    return unless @settings.mirror and !@settings.velocity
     debug 'Building mirror'
     @mirror = new Package.mirror.Mirror 'cucumber',
       cucumber:
@@ -36,7 +36,7 @@ class Cucumber
 
   @_initRunner: ->
     debug 'Building runner'
-    @runner = if @settings.mirror and @settings.remote
+    @runner = if @settings.mirror and @settings.remote and !@settings.velocity
       if @mirror.isMirror
         debug 'Building mirror runner'
         new @Runner.Mirror @mirror
@@ -52,16 +52,21 @@ class Cucumber
     @reporters.velocity = new @Reporter.Velocity if @settings.velocity
 
   @_initWatchers: ->
+    return if @settings.velocity
     @watchers = rerun: new @Watcher.Rerun @settings.path
     if @settings.velocity
       @watchers.velocity = new @Watcher.Velocity @settings.path
     watcher.watch() for name, watcher of @watchers if @settings.watch
 
   @_initStartup: ->
-    return unless @settings.startup
-    startup = Meteor.bindEnvironment =>
+    startup = Meteor.bindEnvironment (callback) =>
       debug 'Cucumber running startup'
-      @runner.run()
+      @runner.run callback
+    if @settings.velocity
+      return Package.velocity.Velocity.registerFramework 'cucumber',
+        mirror: @settings.mirror, watch: 'features/**/*.{feature,js,coffee}',
+        startup
+    return unless @settings.startup
     if Package.webapp
       return startup() if Package.webapp.WebApp.httpServer?._handle?
       return Package.webapp.WebApp.onListening startup
