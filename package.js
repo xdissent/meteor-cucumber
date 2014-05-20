@@ -1,4 +1,7 @@
 
+var fs = Npm.require('fs'),
+  path = Npm.require('path');
+
 Package.describe({
   summary: 'CucumberJS test runner and Velocity reporter'
 });
@@ -13,8 +16,12 @@ Package.on_use(function (api) {
   api.use(['underscore', 'coffeescript'], 'server');
 
   api.use('webapp', 'server', {weak: true});
-  api.use('velocity', 'server', {weak: true});
   api.use('mirror', 'server');
+
+  // https://github.com/meteor/meteor/issues/1358
+  if (fs.existsSync(path.join(process.env.PWD, 'packages', 'velocity'))) {
+    api.use('velocity', 'server', {weak: true});
+  }
 
   api.add_files('src/index.coffee', 'server');
 
